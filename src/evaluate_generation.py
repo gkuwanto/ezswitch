@@ -126,9 +126,8 @@ class GPTEvaluator:
                 messages=chat,
                 max_tokens=20
             )
-            output.append(response.choices[0].message)
-        self.post_process(output)
-        return output
+            output.append(response.choices[0].message.content)
+        return self.post_process(output)
     
     def evaluate_batch(self, list_of_sentences):
         list_of_chat = self.transform(list_of_sentences)
